@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 import lombok.Data;
 
 @Entity
-@Data
+
 public class SupportCase implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -31,4 +31,30 @@ public class SupportCase implements Serializable {
 
 	@NotNull
 	private Status status;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+	
+	
 }

@@ -12,6 +12,8 @@ import javax.persistence.PersistenceContext;
 import lombok.extern.slf4j.Slf4j;
 
 import org.anttix.example.shj.domain.Event;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.anttix.example.shj.domain.Category;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.annotation.Profile;
@@ -22,6 +24,9 @@ import org.springframework.transaction.annotation.Transactional;
 @Profile("dev")
 @Slf4j
 public class TestDataGenerator {
+	
+	private static final Logger log = LoggerFactory.getLogger(TestDataGenerator.class);
+	
 	@Inject
 	private BeanFactory bf;
 
