@@ -13,7 +13,7 @@ import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
 @Configuration
-@Profile("dev")
+@Profile("db-embedded")
 // See: http://java.dzone.com/articles/spring-31-environment-profiles
 public class HSQLDataSource {
 	@Bean

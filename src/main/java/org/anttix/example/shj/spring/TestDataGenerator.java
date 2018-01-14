@@ -24,9 +24,9 @@ import org.springframework.transaction.annotation.Transactional;
 @Profile("dev")
 @Slf4j
 public class TestDataGenerator {
-	
+
 	private static final Logger log = LoggerFactory.getLogger(TestDataGenerator.class);
-	
+
 	@Inject
 	private BeanFactory bf;
 
@@ -35,8 +35,12 @@ public class TestDataGenerator {
 
 	@PostConstruct
 	public void init() {
-		TestDataGenerator self = bf.getBean(TestDataGenerator.class);
-		self.generateTestData();
+		try {
+			TestDataGenerator self = bf.getBean(TestDataGenerator.class);
+			self.generateTestData();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Transactional
@@ -46,7 +50,7 @@ public class TestDataGenerator {
 
 		log.info("Generating {} test categories", ncat);
 		ArrayList<Category> categories = new ArrayList<Category>();
-		for(int i = 1; i <= ncat; i++) {
+		for (int i = 1; i <= ncat; i++) {
 			Category c = new Category();
 			c.setName("Cat " + i);
 			em.persist(c);
@@ -54,7 +58,7 @@ public class TestDataGenerator {
 		}
 
 		log.info("Generating {} test events", nevent);
-		for(int i = 1; i <= nevent; i++) {
+		for (int i = 1; i <= nevent; i++) {
 			Event e = new Event();
 			e.setName("Event " + i);
 			e.setCategory(categories.get(i % categories.size()));
